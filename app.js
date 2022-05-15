@@ -1,6 +1,7 @@
 // defining the two areas using jQuery syntax
 const $gifs = $("#gifs");
 const $searchFor = $("#search");
+const $searchForm = $("#giphy-form");
 
 // adding new giphy to the table
 function addGif(res) {
@@ -20,9 +21,9 @@ function addGif(res) {
 }
 
 // handle the form submisssion and trying to add the new gif
-$("#search-giphy").on("click", async function(evt) {
+$searchForm.on("submit", async function(evt) {
   evt.preventDefault();
-
+  
   let searchTerm = $searchFor.val();
   $searchFor.val("");
 
@@ -32,7 +33,7 @@ $("#search-giphy").on("click", async function(evt) {
       api_key: "MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym"
     }
   });
-  //console.log(response.data);
+
   addGif(response.data);
 });
 
